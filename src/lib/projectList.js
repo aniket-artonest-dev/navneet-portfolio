@@ -20,7 +20,8 @@ export const projectList = [
       "https://apps.apple.com/in/app/voops-ai-virtual-influencer/id6670240082",
     androidUrl: "https://play.google.com/store/apps/details?id=com.voops.ai",
     androidUnavailable: true,
-  },
+  }, 
+  
 
   {
     name: "Viral My Post-AI Auto Captions",
