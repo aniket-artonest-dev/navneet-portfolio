@@ -8,6 +8,7 @@ export const projectList = [
       "https://play.google.com/store/apps/details?id=uy.com.coinapp.coin",
     iosUrl:
       "https://apps.apple.com/us/app/coin-finanzas-personales/id1548806607",
+    iosUnavailable: true,
   },
 
   {
@@ -18,6 +19,7 @@ export const projectList = [
     iosUrl:
       "https://apps.apple.com/in/app/voops-ai-virtual-influencer/id6670240082",
     androidUrl: "https://play.google.com/store/apps/details?id=com.voops.ai",
+    androidUnavailable: true,
   },
 
   {
@@ -37,6 +39,7 @@ export const projectList = [
     filter: "Flutter,Bloc,GraphQL/Rest APIs",
     androidUrl:
       "https://play.google.com/store/apps/details?id=com.letspresscontinue.Continuem&hl=en_IN&gl=US",
+    androidUnavailable: true,
   },
   {
     name: "Cooddle",
@@ -44,6 +47,7 @@ export const projectList = [
       "https://res.cloudinary.com/ddglb9gp6/image/upload/v1737955699/Frame_1948757794_s1qpyo.png",
     filter: "Flutter,Getx,GraphQL/Rest APIs",
     iosUrl: "https://apps.apple.com/us/app/cooddle/id6479634264",
+    iosUnavailable: true,
   },
 
   {
@@ -61,6 +65,7 @@ export const projectList = [
       "https://res.cloudinary.com/ddglb9gp6/image/upload/v1737955697/Frame_1410147071_mjuooy.png",
     filter: "FlutterFlow,Firebase ",
     webUrl: "https://rere-note.com/",
+    webUnavailable: true,
   },
   {
     name: "Rose: Smarter Mental Health",

@@ -1,17 +1,45 @@
 "use client";
 
 import { projectList } from "@/lib/projectList";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
+const TOAST_MESSAGE = "This link is not available or is not live yet.";
 
 const Work = () => {
     const [filter, setFilter] = useState("All");
+    const [toastVisible, setToastVisible] = useState(false);
+    const toastTimerRef = useRef(null);
     const techStack = ["All", "Flutter", "FlutterFlow", "FlutterFlame", "Firebase", "Supabase", "GraphQL/Rest APIs", "Getx", "Bloc"];
-    const router = useRouter();
+
+    useEffect(() => {
+        return () => {
+            if (toastTimerRef.current) {
+                clearTimeout(toastTimerRef.current);
+            }
+        };
+    }, []);
+
+    const showToast = () => {
+        setToastVisible(true);
+        if (toastTimerRef.current) {
+            clearTimeout(toastTimerRef.current);
+        }
+        toastTimerRef.current = setTimeout(() => {
+            setToastVisible(false);
+        }, 3000);
+    };
+
+    const handleLinkClick = (url, unavailable) => {
+        if (unavailable || !url) {
+            showToast();
+            return;
+        }
+        window.open(url, "_blank");
+    };
 
     return (
         <div className="mt-[100px]">
-                <div className="px-10 py-5 lg:px-20 lg:py-10">
+            <div className="px-10 py-5 lg:px-20 lg:py-10">
                 <div className="lg:ps-40 flex flex-wrap gap-4">
                     {techStack.map((tech) => (
                         <button
@@ -50,7 +78,7 @@ const Work = () => {
                                         <button
                                             data-cursor="-hidden"
                                             className="rounded-full py-1 hover:text-black hover:bg-white px-3 border flex items-center gap-x-4"
-                                            onClick={() => window.open(project.iosUrl, "_blank")}
+                                            onClick={() => handleLinkClick(project.iosUrl, project.iosUnavailable)}
                                         >
                                             iOS App
                                         </button>
@@ -59,7 +87,7 @@ const Work = () => {
                                         <button
                                             data-cursor="-hidden"
                                             className="rounded-full py-1 hover:text-black hover:bg-white px-3 border flex items-center gap-x-4"
-                                            onClick={() => window.open(project.androidUrl, "_blank")}
+                                            onClick={() => handleLinkClick(project.androidUrl, project.androidUnavailable)}
                                         >
                                             Android App
                                         </button>
@@ -68,7 +96,7 @@ const Work = () => {
                                         <button
                                             data-cursor="-hidden"
                                             className="rounded-full py-1 hover:text-black hover:bg-white px-3 border flex items-center gap-x-4"
-                                            onClick={() => window.open(project.webUrl, "_blank")}
+                                            onClick={() => handleLinkClick(project.webUrl, project.webUnavailable)}
                                         >
                                             Web App
                                         </button>
@@ -77,7 +105,7 @@ const Work = () => {
                                         <button
                                             data-cursor="-hidden"
                                             className="rounded-full py-1 hover:text-black hover:bg-white px-3 border flex items-center gap-x-4"
-                                            onClick={() => window.open(project.githubUrl, "_blank")}
+                                            onClick={() => handleLinkClick(project.githubUrl, project.githubUnavailable)}
                                         >
                                             GitHub
                                         </button>
@@ -90,6 +118,14 @@ const Work = () => {
                     }
                 })}
             </div>
+
+            {toastVisible && (
+                <div className="fixed bottom-6 left-1/2 z-[100] -translate-x-1/2 px-4">
+                    <div className="rounded-full border border-white/20 bg-[#1a1a1a] px-5 py-3 text-sm text-white shadow-lg">
+                        {TOAST_MESSAGE}
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
