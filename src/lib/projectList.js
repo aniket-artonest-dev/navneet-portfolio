@@ -21,7 +21,7 @@ export const projectList = [
     androidUrl: "https://play.google.com/store/apps/details?id=com.voops.ai",
     androidUnavailable: true,
   }, 
-  
+
 
   {
     name: "Viral My Post-AI Auto Captions",
@@ -78,7 +78,7 @@ export const projectList = [
     iosUrl:
       "https://apps.apple.com/us/app/rose-smarter-mental-health/id1454630070?ls=1",
   },
-
+ 
   {
     name: "Space Shooter",
     imageUrl:
